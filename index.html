@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shay B Lamon – Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Jost:wght@400;500;600&family=Poiret+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf7e6;
+  --bg-2:#f3eed6;
+  --ink:#4b5a3b;
+  --ink-soft:#7c8868;
+  --accent:#6f8258;
+  --line:rgba(75,90,59,.22);
+  --chip-on-bg:#6f8258;
+  --chip-on-ink:#fbf7e6;
+  --head:'Gloock', Georgia, 'Times New Roman', serif;
+  --body:'Jost', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --logo:'Poiret One', 'Gloock', Georgia, serif;
+  --hdr-h:0px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1a1e16;--bg-2:#22271d;--ink:#e6ebd4;--ink-soft:#a2ad8c;--accent:#a8bc8b;
+    --line:rgba(230,235,212,.2);--chip-on-bg:#a8bc8b;--chip-on-ink:#1a1e16;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1a1e16;--bg-2:#22271d;--ink:#e6ebd4;--ink-soft:#a2ad8c;--accent:#a8bc8b;
+  --line:rgba(230,235,212,.2);--chip-on-bg:#a8bc8b;--chip-on-ink:#1a1e16;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100%;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.45;
+  background-image:
+    radial-gradient(900px 380px at 85% -60px, color-mix(in srgb,var(--accent) 14%, transparent), transparent 70%),
+    radial-gradient(700px 300px at -10% 40%, color-mix(in srgb,var(--accent) 8%, transparent), transparent 70%);
+  background-repeat:no-repeat;
+}
+a{color:inherit}
+ 
+/* ---------- Masthead ---------- */
+.masthead{
+  max-width:760px;margin:0 auto;padding:44px 22px 26px;text-align:center;
+}
+.wordmark{
+  font-family:var(--logo);font-weight:400;color:var(--accent);
+  font-size:clamp(40px,12vw,76px);line-height:.95;letter-spacing:.02em;margin:0;
+  text-transform:uppercase;
+}
+.subline{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin:12px auto 0;max-width:560px;font-size:13px;color:var(--ink-soft);letter-spacing:.08em;
+}
+.subline strong{font-weight:500;font-size:clamp(14px,3.8vw,19px);color:var(--ink);letter-spacing:.06em}
+.theme-btn{
+  position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);right:14px;
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);
+  cursor:pointer;font-size:17px;display:grid;place-items:center;
+}
+.theme-btn:focus-visible,.chip:focus-visible,.search input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+ 
+/* ---------- Sticky bar ---------- */
+.bar{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:color-mix(in srgb,var(--bg) 92%, transparent);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.bar-inner{max-width:760px;margin:0 auto;padding:10px 0 0}
+.search{padding:0 18px 8px}
+.search input{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg-2);
+  border:1px solid var(--line);border-radius:999px;padding:10px 16px;
+}
+.search input::placeholder{color:var(--ink-soft)}
+.chips{
+  display:flex;gap:8px;overflow-x:auto;padding:0 18px 12px;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;font:inherit;font-size:15px;font-weight:500;color:var(--ink);background:transparent;
+  border:1px solid var(--line);border-radius:999px;padding:7px 15px;cursor:pointer;white-space:nowrap;
+}
+.chip[aria-current="true"]{background:var(--chip-on-bg);color:var(--chip-on-ink);border-color:var(--chip-on-bg)}
+ 
+/* ---------- Menu ---------- */
+main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
+.sec{scroll-margin-top:calc(var(--hdr-h) + env(safe-area-inset-top,0px) + 6px);padding-top:34px}
+.sec > h2{
+  font-family:var(--head);font-weight:400;font-size:clamp(34px,8.5vw,52px);line-height:1;
+  margin:0 0 4px;color:var(--accent);
+}
+.grp{margin-top:22px}
+.grp > h3{
+  font-family:var(--head);font-weight:400;font-size:22px;margin:0 0 6px;color:var(--ink);
+  padding-bottom:6px;border-bottom:1px solid var(--line);
+}
+.grp > p.gnote{margin:6px 0 0;font-size:14px;color:var(--ink-soft)}
+.items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;column-gap:34px}
+@media (min-width:640px){.items{grid-template-columns:1fr 1fr}}
+.item{padding:13px 0 12px;border-bottom:1px dotted var(--line);break-inside:avoid}
+.row{display:flex;align-items:baseline;gap:10px}
+.name{font-family:var(--head);font-size:18px;line-height:1.2;flex:1 1 auto}
+.price{flex:0 0 auto;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:17px}
+.price small{font-size:11px;margin-left:2px;color:var(--ink-soft);letter-spacing:.06em;vertical-align:super}
+.price.ask{font-weight:400;font-size:13px;color:var(--ink-soft);font-style:italic}
+.desc{margin:4px 0 0;font-size:14px;color:var(--ink-soft);line-height:1.4;max-width:60ch}
+.note{margin:3px 0 0;font-size:12.5px;color:var(--accent);font-weight:500}
+.empty{display:none;text-align:center;color:var(--ink-soft);padding:60px 10px}
+footer{max-width:760px;margin:0 auto;padding:10px 22px 50px;text-align:center;color:var(--ink-soft);font-size:13px}
+footer p{margin:4px 0}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+ 
+<button class="theme-btn" id="themeBtn" aria-label="Switch light or dark theme" title="Light / dark">◐</button>
+ 
+<header class="masthead" id="top">
+  <h1 class="wordmark">Shay B Lamon</h1>
+  <div class="subline"><span>EST.</span><strong>Cafe &amp; Restaurant</strong><span>2020</span></div>
+</header>
+ 
+<div class="bar" id="bar">
+  <div class="bar-inner">
+    <div class="search"><input id="q" type="search" placeholder="Search the menu" aria-label="Search the menu" autocomplete="off"></div>
+    <nav class="chips" id="chips" aria-label="Menu sections"></nav>
+  </div>
+</div>
+ 
+<main id="menu"></main>
+<div class="empty" id="empty" role="status">Nothing matches that search. Try a shorter word, like “chicken” or “mango”.</div>
+ 
+<footer>
+  <p>All prices are in Egyptian pounds (LE).</p>
+</footer>
+ 
+<script>
+/* name, price (number | null), description, note */
+const MENU = [
+ {id:'breakfast', title:'Breakfast', groups:[
+  {items:[
+   ['Egyptian Breakfast',199,'Feteer meshaltet, molasses, tahini, cheese'],
+   ['Eastern Breakfast',199,'Fool beans, falafel, eggs, eggplant pickles, potatoes, white cheese, harissa chili paste, baladi bread'],
+   ['Continental Breakfast',265,'Omelette, hotdog, fries, toasted bread, herb mushroom']
+  ]}
+ ]},
+ {id:'starters', title:'Starters', groups:[
+  {title:'Soup', items:[
+   ['Orzo Soup',75],['Lentil Soup',95],['Cream Mushroom Soup',99],['Creamy Chicken Mushroom Soup',110],['Onion Soup',85],['French Tomato Soup',99]
+  ]},
+  {title:'Salads', items:[
+   ['Fattoush Salad',129,'Tomatoes, cucumbers, kabocha, bell peppers, white onion, lemon, green bell pepper, pomegranate molasses, Lebanese bread'],
+   ['Greek Salad',145,'Tomatoes, black olives, cucumber, green bell pepper, colored peppers, cheese'],
+   ['Chicken Caesar Salad',210,'Cherry tomatoes, caesar dressing, kabocha, grilled chicken'],
+   ['Shrimp Caesar',235,'Cherry tomatoes, caesar dressing, kabocha, shrimp'],
+   ['Salad Cup',265]
+  ]},
+  {title:'Mezza (cold)', items:[['Tahini',50],['Toumia',50],['Baba Ghanoush',50]]},
+  {title:'Mezza (hot)', items:[
+   ['Chicken Strips',165],['Cheese Homemade Fries',110],['Potato Wedges',105,'Choose tahini, spicy or cheese'],['Homemade Fries',80]
+  ]}
+ ]},
+ {id:'sandwiches', title:'Sandwiches & Tacos', groups:[
+  {title:'Sandwiches', items:[
+   ['Chicken Wrap',235,'Chicken strips, bacon, ranch sauce, mozzarella cheese, red cheddar cheese, kabocha'],
+   ['Buffalo Chicken Burger',null,'Fried chicken burger covered with buffalo sauce, cheese and coleslaw'],
+   ['Spot Burger',275,'Sliced tender beef patty, mushroom, caramelized onion, secret sauce, jalapeno, cheddar sauce'],
+   ['Chicken Quesadilla',215,'Tortilla bread, grilled chicken, mozzarella, red cheddar cheese, mayonnaise, BBQ sauce, soy sauce'],
+   ['Cheesy Mix Quesadilla',180,'Tortilla bread, mozzarella, red cheddar cheese, mayonnaise, kiri'],
+   ['Hawawshi Roll',155,'Our signature Egyptian hawawshi rolls, served with tahini sauce'],
+   ['Shay B Lamon Burger',300,'Double smash patties with fried mozzarella, rocca, ranch sauce'],
+   ['Dynamite Shrimp Wrap',285,'Crispy shrimp, lettuce, jalapeno, dynamite sauce'],
+   ['Classic Hawawshi',135,'Egyptian hawawshi served with onion pickles and tahini sauce'],
+   ['Mixed Cheese Hawawshi',175,'Egyptian hawawshi with cheddar and roumi cheese, served with onion pickles and tahini sauce']
+  ]},
+  {title:'Tacos', items:[
+   ['Chicken Tacos',null,'Tender chicken, crunchy coleslaw and bold flavors wrapped in soft tortillas. A bite of pure street goodness.'],
+   ['Beef Tacos',null,'Juicy beef patties in soft tortillas, topped with fresh veggies and a flavorful sauce.'],
+   ['Shrimp Tacos',null,'Crispy shrimp tossed in a spicy, creamy sauce, served in soft tortillas with fresh toppings.']
+  ]}
+ ]},
+ {id:'feteer', title:'Feteer', groups:[
+  {title:'Savory feteer', items:[
+   ['Chicken Feteer',249,'Mozzarella cheese, roumy cheese, black olives, chicken'],
+   ['Pastrami & Kiri Feteer',299,'Mozzarella cheese, roumy cheese, black olives, pastrami, kiri'],
+   ['Sausage, Pastrami & Kiri Feteer',299,'Mozzarella cheese, roumy cheese, black olives, pastrami, kiri, sausage'],
+   ['Mix Meat Feteer',null,'Mozzarella cheese, roumy cheese, black olives, pastrami, ground beef, sausage, hotdog'],
+   ['Sausage & Kiri Feteer',299,'Mozzarella cheese, roumy cheese, black olives, sausage, kiri'],
+   ['4 Cheese Feteer',null,'Mozzarella cheese, roumy cheese, black olives, red cheese, kiri'],
+   ['Feteer Meshaltet',250,'The Shay B Lamon feteer']
+  ]},
+  {title:'Sweet feteer', items:[
+   ['Nutella',225],['Bughasha',199],['Chocolate Banana',235],['Ashta Honey',199],['Lotus',245]
+  ]},
+  {title:'Roqaq', items:[['Roqaq With Meat',160]]}
+ ]},
+ {id:'pizza', title:'Pizza', groups:[
+  {items:[
+   ['Margherita',199,'Mozzarella cheese, pizza sauce'],
+   ['4 Cheese',255,'Mozzarella cheese, red cheddar cheese, roquefort cheese, kiri cheese, pizza sauce'],
+   ['Pepperoni',249,'Mozzarella cheese, pizza sauce, pepperoni'],
+   ['Seafood Pizza',299,'Mozzarella cheese, calamari, shrimp, pizza sauce, crab'],
+   ['Chicken Pesto',285,'Mozzarella cheese, grilled chicken, turkey, white sauce, bell peppers, pesto sauce'],
+   ['Ranch Pizza',275,'Mozzarella cheese, crispy chicken, ranch sauce, jalapeno peppers'],
+   ['Pizza Sandwich Burger',285,'Mozzarella cheese, cheese sauce, burger pizza sauce, BBQ, pepperoni, fries, lettuce'],
+   ['Big Tasty Pizza',275,'Mozzarella cheese, big tasty sauce, burger, pizza sauce'],
+   ['BBQ Pizza',255,'Mozzarella cheese, BBQ sauce, crispy chicken, pizza sauce'],
+   ['Buffalo Pizza',285,'Mozzarella cheese, buffalo sauce, crispy chicken, pizza sauce'],
+   ['Dynamite Shrimp',335,'Mozzarella cheese, jalapeno, shrimp, pizza sauce'],
+   ['Seafood Wasabi',335,'Mozzarella cheese, wasabi sauce, calamari, shrimp, pizza sauce, crab'],
+   ['Seafood Ranch',299,'Mozzarella cheese, ranch sauce, calamari, shrimp, crab'],
+   ['Creamy Onion Nashville',199,'Mozzarella cheese, nashville sauce, onion, crispy chicken, pizza sauce']
+  ]}
+ ]},
+ {id:'pasta', title:'Pasta & Pan', groups:[
+  {title:'Pasta', items:[
+   ['Chili Beef Lasagna',335,'Lasagna rolls served with cheesy fries, jalapenos and chili beef'],
+   ['Beef Alfredo Pasta',385,'Beef, fusilli pasta, mushroom, brown sauce'],
+   ['Steak Pasta',375],
+   ['Negresco Pasta',275,'Grilled chicken, penne pasta, white sauce, mozzarella cheese'],
+   ['Alfredo Pasta',229,'Grilled chicken, penne pasta, white sauce'],
+   ['Pisto Pasta',239,'Grilled chicken or shrimp, penne pasta, white sauce, pesto sauce','Price shown is for chicken. Ask for the shrimp price.'],
+   ['Curry Pasta',249,'Grilled chicken, white sauce, curry sauce'],
+   ['Penne Arabiata',155,'Pasta with red sauce and green peppers'],
+   ['Seafood Pasta With Pink Sauce',290,'Shrimp, calamari, crab sticks, penne pasta, cream, pink sauce'],
+   ['Mac & Cheese Strips',299,'Mozzarella cheese, pizza sauce, kiri, chicken strips']
+  ]},
+  {title:'Pan', items:[['Kiri Cheese Sausage Pan',219],['Crispy Pepperoni',265],['Buffalo Chicken',249]]}
+ ]},
+ {id:'mains', title:'Main Dishes', groups:[
+  {title:'Beef', items:[
+   ['Beef Escalope',null,'Meat with onions, served with rice and bread'],
+   ['Fillet Mushroom',399,'Beef fillet served with a brown sauce and mushrooms'],
+   ['Mushroom Piccata',399,'Beef fillet served with a brown sauce and mushrooms'],
+   ['Pepper Sauce Fillet',349,'Beef fillet served with pepper sauce']
+  ]},
+  {title:'Chicken', items:[
+   ['Chicken Pane Bechamel',299,'Chicken breasts topped with bechamel sauce, bacon and mozzarella, served with fries'],
+   ['Chicken Snow Way',299,'Fried chicken served with a creamy sauce, mushrooms and cheese'],
+   ['Chicken Cordon Bleu',325,'Chicken breasts topped with bacon, turkey, mozzarella cheese, red cheddar cheese and fresh mushrooms'],
+   ['Pesto Chicken',285,'Chicken breasts served with pesto sauce'],
+   ['Country Chicken',285,'Boneless chicken breasts topped with bacon and smoked turkey, finished with melted mozzarella cheese'],
+   ['Grilled Chicken',259,'Chicken breasts'],
+   ['Chicken Sweet and Sour',260,'Chicken breasts served with a special sweet and sour sauce created by Shay B Lamon'],
+   ['Chicken Escalope',275,'Crispy breaded chicken, golden fried to perfection, tender and juicy inside. A classic favorite.'],
+   ['Chicken Caramelized',299,'Fried chicken breasts served with brown mushrooms and caramelized onions'],
+   ['Chicken Shay B Lamon',350,'Grilled chicken, hotdog, cheese sauce, bell peppers'],
+   ['Chicken Donuts',375,'Chicken breasts topped with mushrooms, bacon, turkey and mozzarella cheese, all smothered in cheddar sauce'],
+   ['Chicken Brown Sauce',320,'Grilled chicken breast served with a rich and savory brown sauce'],
+   ['Indian Curry Chicken',285,'Grilled chicken breast served with curry sauce and vibrant bell peppers, with white basmati rice'],
+   ['Chicken Madness',350,'Fried chicken served with a creamy sauce, mushrooms and cheese'],
+   ['Creamy Grilled Chicken',320,'Chicken breasts topped with mozzarella, red cheddar cheese and fresh mushrooms']
+  ]},
+  {title:'Fukharah', items:[['Sett El Haga',379],['Egyptian Kebab Hallah',349]]}
+ ]},
+ {id:'hot', title:'Hot Drinks', groups:[
+  {title:'Coffee', items:[
+   ['Single Espresso',55],['Double Espresso',75],['Macchiato',75],['Double Macchiato',90],['Cortado',85],['Macchiato Caramel',105],
+   ['American Coffee',85],['Turkish Coffee',60],['Double Turkish Coffee',75],['Cappuccino',95],['Latte',95],['Spanish Latte',100],
+   ['Mocha',85],['White Mocha',85],['Affogato',110],['Affogato Tiramisu',135],['Flat White',95],['Nescafe',80],['French Coffee',80],['Hazelnut Coffee',95],['Hot Chocolate',100]
+  ]},
+  {title:'Tea & herbal', items:[
+   ['English Breakfast Tea',55],['Red Tea',55],['Small Tea Kettle',70],['Large Tea Kettle',90],['Green Tea',60],['Anise',55],['Mint',55],['Ginger',50],
+   ['Green Tea & Mint',65],['Milk Tea',65],['Cinnamon',60],['Hot Cider',80],['Herb Cocktail',80],['Boiled Lemon',60],['Earlgray Tea',65],['Green Tea Sencha',65],['Hibiscus',55]
+  ]},
+  {title:'Milk & sahlab', items:[['Milk With Cinnamon',75],['Sahlab',95],['Sahlab With Cinnamon',110],['Sahlab With Nuts',120]]}
+ ]},
+ {id:'cold', title:'Cold Drinks', groups:[
+  {title:'Fresh juice', items:[
+   ['Mango',95],['Strawberry',85],['Guava',85],['Guava With Milk',95],['Banana With Milk',85],['Watermelon',85],['Plum',85],['Peach',75],['Mint Lemonade',85],['Pomegranate',75],
+   ['Pineapple',105],['Roman',75],['Cantaloupe',85],['Dates With Milk',95],['Avocado',140],['Kiwi',135],['Orange',75],['Lemon',70],['Tangerine',75]
+  ]},
+  {title:'Smoothies', items:[
+   ['Watermelon',95],['Watermelon Mint',105],['Mango',110],['Strawberry',95],['Cantaloupe',90],['Kiwi',140],['Mint Lemonade',90],
+   ['Passion Fruit',100],['Peach',95],['Blueberry',100],['Mint Blueberry',110],['Cola',100],['Lemon',80]
+  ]},
+  {title:'Frappe', items:[
+   ['Latte',120],['Mocha',120],['Caramel',110],['Chocolate',140,'White or dark'],['Frappuccino',125],['Lotus',150],['Peanut Butter',145],['Pistachio',145],['Oreo',120]
+  ]},
+  {title:'Iced', items:[
+   ['Latte',95],['Spanish Latte',100],['Pistachio Latte',115],['Lotus Latte',120],['American Coffee',85],['Blue Spanish Latte',110],['Mocha',100,'Dark or white'],['Macchiato Caramel',105],['Cappuccino',95]
+  ]},
+  {title:'Shakes', items:[
+   ['Vanilla',100],['Chocolate',120],['Strawberry',110],['Lotus',135],['Mango',120],['Dulce De Leche',140],['Oreo',135],
+   ['Blueberry',120],['Cheesecake',145],['Passion Fruit',125],['Peanut Butter',135],['Pistachio',145]
+  ]},
+  {title:'Mojito & mocktails', items:[
+   ['Strawberry',110],['Latin Craft',95],['Sun Shine',85],['Red Nut',105],['Yellow Fizz',100],
+   ['Cherry Cola',110],['The Frost',105],['Sun Rise',85],['Purple Wave',90],['Virgin Wine',95]
+  ]},
+  {title:'Cocktails', items:[
+   ['Dates With Milk',100],['Rio',115],['Mint Blueberry',90],['Zanzibar',135],['Mint Guava',95],['Vini Nas',105],['Pina Colada',110],['Mango Avocado',139]
+  ]},
+  {title:'Cold cans', items:[
+   ['Cocacola',55],['V Cola',65],['Sprite',55],['Fanta',55,'Apple or orange'],['Fairouz',65],['Schweppes',65],['Birell',70],['Small Water',25,'Dasani'],['RedBull',110],['Sparkle Water',60]
+  ]},
+  {title:'Power-ups by RedBull', items:[
+   ['Blue Curacao',135],['Blueberry',135],['Watermelon',135],['Mojito',135],['Mint Guava',135],['Coconut',135],['Roman',135],['Vanilla',135]
+  ]}
+ ]},
+ {id:'dessert', title:'Dessert', groups:[
+  {title:'Waffles', items:[
+   ['Caramel & Chocolate Waffle',115],['Strawberry Waffle',95],['Lotus & Nutella Waffle',165],['Nutella Waffle',130],['Lotus Waffle',130],['Fruit Waffle',140],['Chocolate Waffle',120],['Caramel Waffle',120]
+  ]},
+  {title:'Cakes & cheesecake', items:[
+   ['Molten Chocolate Cake',145],['Chocolate Cake',110],['Cookies',150],['Brownies Wich',165],['Brownies',130],
+   ['Nutella Cheesecake',130],['Lotus Cheesecake',140],['Blueberry Cheesecake',125],['Chocolate Cheesecake',125],['Strawberry Cheesecake',125],['Caramel Cheesecake',125],
+   ['Oreo Madness',135],['Cheese Madness',145],['Biscoff Lady Cake',165],['Nutella Lady Cake',165]
+  ]},
+  {title:'Fruit', items:[['Fruit Salad',125],['Fruit Salad With Ice Cream',135]]},
+  {title:'Yogurt', items:[['Fruit Yogurt',110],['Blueberry Yogurt',105],['Honey Yogurt',105]]}
+ ]}
+];
+ 
+const menuEl = document.getElementById('menu');
+const chipsEl = document.getElementById('chips');
+const emptyEl = document.getElementById('empty');
+const barEl = document.getElementById('bar');
+const qEl = document.getElementById('q');
+ 
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+ 
+function itemHTML(it){
+  const [name, price, desc, note] = it;
+  const p = (price===null || price===undefined)
+    ? '<span class="price ask">ask us</span>'
+    : '<span class="price">'+price+'<small>LE</small></span>';
+  return '<li class="item" data-s="'+esc((name+' '+(desc||'')+' '+(note||'')).toLowerCase())+'">'
+    + '<div class="row"><span class="name">'+esc(name)+'</span>'+p+'</div>'
+    + (desc?'<p class="desc">'+esc(desc)+'</p>':'')
+    + (note?'<p class="note">'+esc(note)+'</p>':'')
+    + '</li>';
+}
+ 
+menuEl.innerHTML = MENU.map(sec =>
+  '<section class="sec" id="'+sec.id+'" data-sec="'+sec.id+'"><h2>'+esc(sec.title)+'</h2>'
+  + sec.groups.map(g =>
+      '<div class="grp">'+(g.title?'<h3>'+esc(g.title)+'</h3>':'')
+      + '<ul class="items">'+g.items.map(itemHTML).join('')+'</ul></div>'
+    ).join('')
+  + '</section>'
+).join('');
+ 
+chipsEl.innerHTML = MENU.map((s,i) =>
+  '<button class="chip" type="button" data-t="'+s.id+'"'+(i===0?' aria-current="true"':'')+'>'+esc(s.title)+'</button>'
+).join('');
+ 
+function setHdr(){
+  document.documentElement.style.setProperty('--hdr-h', barEl.offsetHeight+'px');
+}
+setHdr(); window.addEventListener('resize', setHdr);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(setHdr);
+ 
+/* chip navigation */
+chipsEl.addEventListener('click', e=>{
+  const b = e.target.closest('.chip'); if(!b) return;
+  if (qEl.value){ qEl.value=''; applyFilter(''); }
+  const t = document.getElementById(b.dataset.t);
+  if (t) t.scrollIntoView({block:'start'});
+});
+ 
+/* scroll spy */
+function spy(){
+  const line = barEl.getBoundingClientRect().bottom + 24;
+  let cur = null;
+  document.querySelectorAll('.sec:not([hidden])').forEach(s=>{
+    if (s.getBoundingClientRect().top <= line) cur = s.id;
+  });
+  if (!cur) cur = MENU[0].id;
+  chipsEl.querySelectorAll('.chip').forEach(c=>{
+    const on = c.dataset.t===cur;
+    if (on) c.setAttribute('aria-current','true'); else c.removeAttribute('aria-current');
+    if (on && !c._shown){ c._shown=true; }
+  });
+  const active = chipsEl.querySelector('[aria-current="true"]');
+  if (active && active.dataset.t !== spy.last){
+    spy.last = active.dataset.t;
+    const r = active.getBoundingClientRect(), cr = chipsEl.getBoundingClientRect();
+    if (r.left < cr.left+10 || r.right > cr.right-10){
+      chipsEl.scrollTo({left: active.offsetLeft - 18, behavior:'smooth'});
+    }
+  }
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{ if(!ticking){ticking=true;requestAnimationFrame(()=>{spy();ticking=false;});} },{passive:true});
+spy();
+ 
+/* search */
+function applyFilter(raw){
+  const q = raw.trim().toLowerCase();
+  let total = 0;
+  document.querySelectorAll('.sec').forEach(sec=>{
+    let secCount = 0;
+    sec.querySelectorAll('.grp').forEach(g=>{
+      let n = 0;
+      g.querySelectorAll('.item').forEach(li=>{
+        const hit = !q || li.dataset.s.indexOf(q) !== -1;
+        li.hidden = !hit; if (hit) n++;
+      });
+      g.hidden = n===0; secCount += n;
+    });
+    sec.hidden = secCount===0; total += secCount;
+  });
+  emptyEl.style.display = total===0 ? 'block' : 'none';
+  spy();
+}
+qEl.addEventListener('input', ()=>applyFilter(qEl.value));
+ 
+/* theme toggle (per-session) */
+const root = document.documentElement;
+document.getElementById('themeBtn').addEventListener('click', ()=>{
+  const dark = getComputedStyle(root).getPropertyValue('--bg').trim().toLowerCase() === '#1a1e16';
+  root.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+</script>
+</body>
+</html>
+ 
